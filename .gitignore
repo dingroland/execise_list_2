@@ -1,8 +1,16 @@
+# data & artifacts
 data/
-*.png
-# model weights / checkpoints
 checkpoints/
 **/checkpoints/
+
+# model weights
 *.pt
 *.pth
 *.ckpt
+*.onnx
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
