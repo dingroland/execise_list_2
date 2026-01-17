@@ -9,12 +9,12 @@ df = pd.read_csv('reviews.csv')
 seed = 844
 subset_df = df.sample(n=2000, random_state=seed) 
 
-# Change the device in case using GPU 
-sentiment_pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english", batch_size=32, device=-1)
+# Change the device in case using GPU
+sentiment_pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english", device=-1)
 
 # Run sentiment analysis on the subset
 texts = subset_df['text'].tolist()
-results = sentiment_pipeline(texts, batch_size=32) 
+results = sentiment_pipeline(texts, batch_size=8) 
 
 # Extract sentiment labels and confidence scores
 subset_df['Sentiment'] = [result['label'] for result in results]
